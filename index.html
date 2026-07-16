@@ -734,17 +734,18 @@ document.addEventListener('DOMContentLoaded',function(){
 
   // ===== Scroll Animation =====
   const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-      }
-    });
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      console.log('Reveal:', entry.target.id);
+    }
   });
+},{
+  threshold:0.1
+});
 
-  document.querySelectorAll('.reveal').forEach(el=>{
-    observer.observe(el);
-  });
-
+document.querySelectorAll('.reveal').forEach(el=>{
+  observer.observe(el);
 });
 </script>
 
